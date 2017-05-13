@@ -13,16 +13,15 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
+//app.use(express.static('users'));
 
-app.use('/users', usersRouter);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended:true
+}));
 
-/*
-app.use('*', function(req, res) {
-  return res.status(404).json({message: 'Not Found'});
-}); */
+app.use('/users/', usersRouter);
 
-// referenced by both runServer and closeServer. closeServer
-// assumes runServer has run and set `server` to a server object
 let server;
 
 function runServer() {

@@ -36,18 +36,18 @@
               Log-in to your account
             </div>
           </h2>
-          <form class="ui large form login-form">
+          <form class="ui large form js-login-form">
             <div class="ui stacked segment">
               <div class="field">
                 <div class="ui left icon input">
                   <i class="user icon"></i>
-                  <input type="text" name="email" placeholder="E-mail address" class="">
+                  <input type="text" class="js-login-username" name="username" placeholder="UserName" class="username">
                 </div>
               </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="lock icon"></i>
-                  <input type="password" name="password" placeholder="Password">
+                  <input type="password" class="js-login-password" name="password" placeholder="Password">
                 </div>
               </div>
               <button type="submit" class="ui fluid large teal submit button log-in">Login</button>
@@ -62,26 +62,22 @@
     </div>
 
     <div class="ui bottom attached tab segment" data-tab="sign-up">
-      <form class="ui form signUp-form">
+      <form class="ui form js-signup-form">
         <div class="field">
           <label>First Name</label>
-          <input type="text" class="signFirstName" name="firstname" placeholder="First Name">
+          <input type="text" class="js-signup-firstname" name="firstname" placeholder="First Name">
         </div>
         <div class="field">
           <label>Last Name</label>
-          <input type="text" class="signLastName" name="lastname" placeholder="Last Name">
+          <input type="text" class="js-signup-lastname" name="lastname" placeholder="Last Name">
         </div>
         <div class="field">
           <label>UserName:</label>
-          <input type="text" class="signUserName" name="username" placeholder="UserName">
-        </div>
-        <div class="field">
-          <label>Email ID:</label>
-          <input type="email" class="signEmail" name="email" placeholder="E-mail address">
+          <input type="text" class="js-signup-username" name="username" placeholder="UserName">
         </div>
         <div class="field">
           <label>Password</label>
-          <input type="password" class="signPassword" name="password" placeholder="Password">
+          <input type="password" class="js-signup-password" name="password" placeholder="Password">
         </div>
         <button class="ui button basic" type="submit">Sign Up</button>
         <div class="ui error message"></div>

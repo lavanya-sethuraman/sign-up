@@ -6,11 +6,9 @@ const passport = require('passport');
 const {User} = require('./models');
 
 const router = express.Router();
+const path    = require("path");
 
-router.use(jsonParser);
 
-
-// NB: at time of writing, passport uses callbacks, not promises
 const basicStrategy = new BasicStrategy((username, password, callback) => {
   let user;
   User
@@ -103,10 +101,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// never expose all your users like below in a prod application
-// we're just doing this so we have a quick way to see
-// if we're creating users. keep in mind, you can also
-// verify this in the Mongo shell.
 router.get('/', (req, res) => {
   return User
     .find()
@@ -116,12 +110,29 @@ router.get('/', (req, res) => {
 });
 
 
+router.get('/me', passport.authenticate('basic', {session:false}), function(req, res) {
+    res.redirect('./public/dashBoard.html');
+  
+});
 
 
-router.get('/me',
-  passport.authenticate('basic', {session: false}),
-  (req, res) => res.json({user: req.user.apiRepr()})
-);
+
+
+
+//   function  (req,res) {
+//      res.redirect('./public/dashBoard.html');
+// }); 
+
+// router.get('/dashboard', function (req, res, next) {
+//   res.sendFile((path.join('/public/dashBoard.html')));
+//   // res.sendFile(path.resolve('public/dashBoard.html'));
+// });
+
+
+// router.get('/me',
+//   passport.authenticate('basic', {session: false}),
+//   (req, res) => res.json({user: req.user.apiRepr()})
+// );
 
 
 module.exports = {router};
